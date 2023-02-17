@@ -12,8 +12,8 @@ public class MaximumNumberOfWordsFoundInSentences {
     public static int mostWordsFound(String[] sentences) {
         int max = -1;
         for (String s : sentences) {
-            Long sentence = Arrays.stream(s.split("\\s+")).count();
-            max = Math.max(max, sentence.intValue());
+            long sentence = Arrays.stream(s.split("\\s+")).count();
+            max = Math.max(max, (int) sentence);
         }
         return max;
     }
