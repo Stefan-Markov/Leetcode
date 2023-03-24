@@ -3,7 +3,7 @@ public class InterpolationSearch {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int number = 8;
-        int index = interpolarSearch(arr, number);
+        int index = interpolationSearch(arr, number);
 
         if (index != -1) {
             System.out.println("Result found at index: " + index);
@@ -12,7 +12,7 @@ public class InterpolationSearch {
         }
     }
 
-    private static int interpolarSearch(int[] array, int value) {
+    private static int interpolationSearch(int[] array, int value) {
         int high = array.length - 1;
         int low = 0;
         while (value >= array[low] && value <= array[high] && low <= high) {
