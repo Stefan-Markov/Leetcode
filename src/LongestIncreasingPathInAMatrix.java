@@ -3,8 +3,8 @@ public class LongestIncreasingPathInAMatrix {
 //        int[][] matrix = {{9, 9, 4}, {6, 6, 8}, {2, 1, 1}};
         int[][] matrix =
                 {{1, 2, 3},
-                {6, 5, 4},
-                {7, 8, 9}};
+                        {6, 5, 4},
+                        {7, 8, 9}};
         int i = longestIncreasingPath(matrix);
         System.out.println(i);
     }
@@ -34,17 +34,17 @@ public class LongestIncreasingPathInAMatrix {
         if (memo[x][y] > 0) {
             return memo[x][y];
         }
-
-        int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        //                       up      down   left    right
+        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
         int ans = 1;
 
         int row = matrix.length;
         int col = matrix[0].length;
 
-        for (int[] dir : dirs) {
-            int nextX = x + dir[0];
-            int nextY = y + dir[1];
+        for (int[] direction : directions) {
+            int nextX = x + direction[0];
+            int nextY = y + direction[1];
 
             if (nextX < 0 || nextX >= row || nextY < 0 || nextY >= col) {
                 continue;
