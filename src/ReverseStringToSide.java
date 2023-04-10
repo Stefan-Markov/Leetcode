@@ -1,35 +1,40 @@
 import java.util.*;
 
 public class ReverseStringToSide {
+
+    private enum Direction {
+        LEFT, RIGHT, UP, DOWN
+    }
+
     public static void main(String[] args) {
-        var sentence = "This is new car";
+        var sentence = "This is my new car";
         // left right up down
-        String direction = "up";
+        Direction direction = Direction.UP;
         List<String> result = reverseStringToDirection(sentence, direction);
         result.forEach(System.out::println);
     }
 
-    private static List<String> reverseStringToDirection(String sentence, String direction) {
+    private static List<String> reverseStringToDirection(String sentence, Direction direction) {
         String[] words = sentence.split("\\s+");
         List<String> solution = new ArrayList<>(words.length);
 
         switch (direction) {
-            case "right" -> solution.addAll(Arrays.asList(words));
-            case "left" -> {
+            case RIGHT -> solution.addAll(Arrays.asList(words));
+            case LEFT -> {
                 for (String word : words) {
                     StringBuffer sb = new StringBuffer(word).reverse();
                     solution.add(sb.toString());
                 }
             }
-            case "up" -> {
+            case UP -> {
                 reverseWords(words, solution);
                 Collections.reverse(solution);
 
             }
-            case "down" -> reverseWords(words, solution);
+            case DOWN -> reverseWords(words, solution);
             default -> throw new IllegalArgumentException("not valid direction");
         }
-        ;
+
         return solution;
     }
 
@@ -37,7 +42,7 @@ public class ReverseStringToSide {
         int max = Arrays.stream(words)
                 .map(String::length)
                 .max(Comparator.naturalOrder())
-                .get();
+                .orElseThrow(IllegalArgumentException::new);
 
         int pointer = 0;
         int length = words.length;
