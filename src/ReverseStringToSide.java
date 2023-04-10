@@ -9,7 +9,7 @@ public class ReverseStringToSide {
     public static void main(String[] args) {
         var sentence = "This is my new car";
         // left right up down
-        Direction direction = Direction.UP;
+        Direction direction = Direction.RIGHT;
         List<String> result = reverseStringToDirection(sentence, direction);
         result.forEach(System.out::println);
     }
