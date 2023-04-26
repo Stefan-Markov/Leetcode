@@ -2,9 +2,11 @@ public class LongestIncreasingPathInAMatrix {
     public static void main(String[] args) {
 //        int[][] matrix = {{9, 9, 4}, {6, 6, 8}, {2, 1, 1}};
         int[][] matrix =
-                {{1, 2, 3},
+                {
+                        {1, 2, 3},
                         {6, 5, 4},
-                        {7, 8, 9}};
+                        {7, 8, 9}
+                };
         int i = longestIncreasingPath(matrix);
         System.out.println(i);
     }
