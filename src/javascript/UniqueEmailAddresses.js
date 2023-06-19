@@ -7,9 +7,8 @@ const getLocalName = (name) => {
 
 const numUniqueEmails = function (emails) {
     const set = new Set();
-    for (let i = 0; i < emails.length; i++) {
-        const email = emails[i];
-        const [localName, domain] = email.split('@');
+    for (const element of emails) {
+        const [localName, domain] = element.split('@');
         const baseEmail = `${getLocalName(localName)}@${domain}`;
         if (!set.has(baseEmail)) {
             set.add(baseEmail);
