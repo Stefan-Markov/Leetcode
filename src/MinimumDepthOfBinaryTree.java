@@ -1,20 +1,32 @@
 import java.util.ArrayDeque;
-import javax.swing.tree.TreeNode;
 
 public class MinimumDepthOfBinaryTree {
 
   public static void main(String[] args) {
-    Object[] root = {3, 9, 20, null, null, 15, 7};
+    Integer[] root = {3, 9, 20, null, null, 15, 7};
 
-    TreeNode rootNode = new TreeNode((int) root[0]);
-    for (int i = 0; i < root.length; i += 3) {
-      TreeNode node = new TreeNode((int) root[i]);
-      if (root[i + 1] != null && root[i + 2] != null) {
-        node.left = new TreeNode((int) root[i + 1]);
-        node.right = new TreeNode((int) root[i + 2]);
-      }
+    TreeNode rootNode = arrayToTree(root, 0);
+    int i = minDepth(rootNode);
+    System.out.println(i);
+  }
+
+  static TreeNode arrayToTree(Integer[] array, int index) {
+    if (index >= array.length) {
+      return null;
     }
-    minDepth(rootNode);
+
+    if (array[index] == null) {
+      return null;
+    }
+
+    return new TreeNode(
+        // value
+        array[index],
+        // left TreeNode
+        arrayToTree(array, index * 2 + 1),
+        // right TreeNode
+        arrayToTree(array, index * 2 + 2)
+    );
   }
 
   public static int minDepth(TreeNode root) {
